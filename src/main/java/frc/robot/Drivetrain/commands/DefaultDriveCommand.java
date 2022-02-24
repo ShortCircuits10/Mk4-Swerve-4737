@@ -1,8 +1,8 @@
-package frc.robot.commands;
+package frc.robot.Drivetrain.commands;
 
 import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DrivetrainSubsystem;
+import frc.robot.Drivetrain.subsystems.DrivetrainSubsystem;
 
 import java.util.function.DoubleSupplier;
 

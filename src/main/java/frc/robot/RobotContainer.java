@@ -10,9 +10,14 @@ import edu.wpi.first.wpilibj.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
-import frc.robot.commands.DefaultDriveCommand;
-import frc.robot.subsystems.DrivetrainSubsystem;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Drivetrain.commands.DefaultDriveCommand;
+import frc.robot.Drivetrain.subsystems.DrivetrainSubsystem;
+import frc.robot.Intake.commands.ExtendIntake;
+import frc.robot.Intake.commands.ForwardIntake;
+import frc.robot.Intake.commands.ReverseIntake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,6 +30,7 @@ public class RobotContainer {
   private final DrivetrainSubsystem m_drivetrainSubsystem = new DrivetrainSubsystem();
 
   private final XboxController m_controller = new XboxController(0);
+  private final XboxController operator = new XboxController(1);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -35,6 +41,7 @@ public class RobotContainer {
     // Left stick Y axis -> forward and backwards movement
     // Left stick X axis -> left and right movement
     // Right stick X axis -> rotation
+    
     m_drivetrainSubsystem.setDefaultCommand(new DefaultDriveCommand(
             m_drivetrainSubsystem,
             () -> -modifyAxis(m_controller.getY(GenericHID.Hand.kLeft)) * DrivetrainSubsystem.MAX_VELOCITY_METERS_PER_SECOND,
@@ -44,6 +51,43 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
+
+
+
+
+
+
+
+    // OPERATOR CONTROLS
+
+    while (operator.getRawAxis(2) != 0){
+        new ExtendIntake(true);
+        new ForwardIntake();
+    }
+
+    while (operator.getRawAxis(3) != 0){
+      new ExtendIntake(true);
+      new ReverseIntake();
+    }
+
+    while(operator.getRawAxis(3) == 0 && operator.getRawAxis(2) == 0) {
+      new ExtendIntake(false);
+    }
+
+   
+
+
+    
+    
+
+
+
+
+
+
+
+
+
   }
 
   /**
