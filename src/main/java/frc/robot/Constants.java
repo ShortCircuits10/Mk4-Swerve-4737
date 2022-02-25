@@ -56,13 +56,17 @@ public final class Constants {
 
     public static final int INTAKE_MOTOR = 14;
 
-// Shooter
-    // 1 motor for the shooter
+    public static final int SHOOTER_MOTOR = 13;
+    public static final int ELEVATOR_MOTOR = 12;
 
-// Climber
-    // 2 motors
 
-// Turning the shooter
-    // 1 motor
+// Pivot Arms
+    // 2 brushless motors
+
+    public static final int INDEX_MOTOR = 11;
+    public static final int ARCS_MOTOR = 10;
+    public static final int TURRET_MOTOR = 9;
+
+
 
 }

@@ -13,11 +13,14 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.ARCS.ARCSSUB;
 import frc.robot.Drivetrain.commands.DefaultDriveCommand;
 import frc.robot.Drivetrain.subsystems.DrivetrainSubsystem;
+
 import frc.robot.Intake.commands.ExtendIntake;
 import frc.robot.Intake.commands.ForwardIntake;
 import frc.robot.Intake.commands.ReverseIntake;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -63,7 +66,7 @@ public class RobotContainer {
     while (operator.getRawAxis(2) != 0){
         new ExtendIntake(true);
         new ForwardIntake();
-    }
+      }
 
     while (operator.getRawAxis(3) != 0){
       new ExtendIntake(true);
@@ -73,6 +76,10 @@ public class RobotContainer {
     while(operator.getRawAxis(3) == 0 && operator.getRawAxis(2) == 0) {
       new ExtendIntake(false);
     }
+
+   
+
+    
 
    
 
