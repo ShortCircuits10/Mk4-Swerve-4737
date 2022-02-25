@@ -19,6 +19,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
   private DoubleSolenoid intakeSolenoid;
   private CANSparkMax intakeMotor;
+
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem() {
     intakeSolenoid = new DoubleSolenoid(Constants.INTAKEPNEUMATIC_FORWARD, Constants.INTAKEPNEUMATIC_REVERSE);
@@ -41,6 +42,21 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public void setSpeed(double speed){
     intakeMotor.set(speed);
+  }
+
+ 
+ 
+  public void IntakeForward(){
+    setSpeed(1);
+  }
+
+  public void IntakeReverse(){
+    setSpeed(-1);
+  }
+
+  public void IntakeOff(){
+    
+    setSpeed(0);
   }
 
   @Override

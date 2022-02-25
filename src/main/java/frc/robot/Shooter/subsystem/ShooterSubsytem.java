@@ -20,6 +20,22 @@ public class ShooterSubsytem extends SubsystemBase {
   public void setSpeed(double speed){
     shooterMotor.set(speed);
   }
+  
+  public void Green(){
+    setSpeed(1);
+  }
+
+  public void Lime(){
+    setSpeed(0.75);
+  }
+
+  public void Yellow(){
+    setSpeed(0.5);
+  }
+
+  public void Red(){
+    setSpeed(0);
+  }
 
   @Override
   public void periodic() {

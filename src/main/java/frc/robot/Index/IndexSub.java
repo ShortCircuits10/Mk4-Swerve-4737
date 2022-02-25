@@ -22,6 +22,20 @@ public class IndexSub extends SubsystemBase {
   public void setSpeed(double speed){
     IndexMotor.set(speed);
   }
+
+  public void IndexUp(){
+    setSpeed(1);
+  }
+
+  public void IndexDown(){
+    setSpeed(-1);
+  }
+
+  public void IndexOff(){
+    setSpeed(0);
+  }
+
+  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

@@ -5,31 +5,36 @@
 package frc.robot.Turret;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import frc.robot.Constants;
 import com.revrobotics.CANSparkMax;
 //import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class TurretSub extends SubsystemBase {
-  /** Creates a new TURRETSUB. */
-  private CANSparkMax TURRETMotor;
-  public TurretSub() {
-     TURRETMotor = new CANSparkMax(Constants.TURRET_MOTOR, MotorType.kBrushed);
-    }
 
-    public void setSpeed(double speed) {
-      TURRETMotor.set(speed);
-    }
-    public void TurretLeft() {
-      setSpeed(100);
-    }
-    public void TurretRight() {
-      setSpeed(-100);
-    }
-    public void TurretOff() {
-      setSpeed(0);
-    }
+  private CANSparkMax turretMotor;
+  /** Creates a new TurretSub. */
+  public TurretSub() {
+    turretMotor = new CANSparkMax(Constants.TURRET_MOTOR, MotorType.kBrushed);
+  }
+
+  public void setSpeed(double speed){
+    turretMotor.set(speed);
+  }
+
+  public void TurretLeft(){
+    setSpeed(1);
+  }
+
+  public void TurretRight(){
+    setSpeed(-1);
+  }
+
+  public void TurretOff(){
+    setSpeed(0);
+  }
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

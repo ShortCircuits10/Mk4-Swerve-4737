@@ -16,10 +16,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.ARCS.ARCSSUB;
 import frc.robot.Drivetrain.commands.DefaultDriveCommand;
 import frc.robot.Drivetrain.subsystems.DrivetrainSubsystem;
+import frc.robot.Intake.IntakeSubsystem;
+import frc.robot.Shooter.subsystem.ShooterSubsytem;
 
-import frc.robot.Intake.commands.ExtendIntake;
-import frc.robot.Intake.commands.ForwardIntake;
-import frc.robot.Intake.commands.ReverseIntake;
 
 
 /**
@@ -64,18 +63,48 @@ public class RobotContainer {
     // OPERATOR CONTROLS
 
     while (operator.getRawAxis(2) != 0){
-        new ExtendIntake(true);
-        new ForwardIntake();
+        new IntakeSubsystem().extendo();
+        new IntakeSubsystem().IntakeForward();
       }
 
     while (operator.getRawAxis(3) != 0){
-      new ExtendIntake(true);
-      new ReverseIntake();
+      new IntakeSubsystem().extendo();
+      new IntakeSubsystem().IntakeReverse();
     }
 
     while(operator.getRawAxis(3) == 0 && operator.getRawAxis(2) == 0) {
-      new ExtendIntake(false);
+      new IntakeSubsystem().asphyxiate();
+      new IntakeSubsystem().IntakeOff();
     }
+
+
+
+    // Shooter
+    while (operator.getAButtonPressed() == true){
+      new ShooterSubsytem().Green();
+      if(operator.getXButton()){
+          break;
+      }
+    }
+
+    while (operator.getBButtonPressed() == true){
+      new ShooterSubsytem().Lime();
+      if(operator.getXButton()){
+          break;
+      }
+    }
+
+    while (operator.getYButtonPressed() == true){
+      new ShooterSubsytem().Yellow();
+      if(operator.getXButton()){
+          break;
+      }
+    }
+
+
+    
+
+
 
    
 

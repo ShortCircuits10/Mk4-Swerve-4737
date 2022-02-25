@@ -23,11 +23,7 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
-  public static IntakeSubsystem INTAKESUB = new IntakeSubsystem();
 
-  public static ShooterSubsytem SHOOTERSUB = new ShooterSubsytem();
-  public static ElevatorSub ELEVATORSUB = new ElevatorSub();
-  public static IndexSub INDEXSUB = new IndexSub();
 
   /**
    * This function is run when the robot is first started up and should be used for any
