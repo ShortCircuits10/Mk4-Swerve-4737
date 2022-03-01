@@ -16,8 +16,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Drivetrain.commands.DefaultDriveCommand;
 import frc.robot.Drivetrain.subsystems.DrivetrainSubsystem;
 import frc.robot.Feeder.FeederSub;
+import frc.robot.Index.IndexSub;
 import frc.robot.Intake.IntakeSubsystem;
 import frc.robot.Shooter.subsystem.ShooterSubsytem;
+import frc.robot.Turret.TurretSub;
 
 
 
@@ -58,49 +60,61 @@ public class RobotContainer {
 
 
 
+    while(true) {
 
-
-    // OPERATOR CONTROLS
-
-    while (operator.getRawAxis(2) != 0){
+      if(operator.getRawAxis(2) != 0){
         new IntakeSubsystem().extendo();
         new IntakeSubsystem().IntakeForward();
       }
-
-    while (operator.getRawAxis(3) != 0){
-      new IntakeSubsystem().extendo();
-      new IntakeSubsystem().IntakeReverse();
-    }
-
-    while(operator.getRawAxis(3) == 0 && operator.getRawAxis(2) == 0) {
-      new IntakeSubsystem().asphyxiate();
-      new IntakeSubsystem().IntakeOff();
-    }
-
-
-
-    // Shooter
-    while (operator.getAButtonPressed() == true){
-      new ShooterSubsytem().Green();
-      if(operator.getXButton()){
-          break;
+      if (operator.getRawAxis(3) != 0){
+        new IntakeSubsystem().extendo();
+        new IntakeSubsystem().IntakeReverse();
       }
-    }
-
-    while (operator.getBButtonPressed() == true){
-      new ShooterSubsytem().Lime();
-      if(operator.getXButton()){
-          break;
+      if(operator.getRawAxis(3) == 0 && operator.getRawAxis(2) == 0) {
+        new IntakeSubsystem().asphyxiate();
+        new IntakeSubsystem().IntakeOff();
       }
-    }
-
-    while (operator.getYButtonPressed() == true){
-      new ShooterSubsytem().Yellow();
-      if(operator.getXButton()){
-          break;
+      // Shooter
+      if (operator.getAButtonPressed()){
+        new ShooterSubsytem().Green();
       }
-    }
 
+      if (operator.getBButtonPressed()){
+        new ShooterSubsytem().Lime();
+      }
+
+      if (operator.getYButtonPressed()){
+        new ShooterSubsytem().Yellow();
+      }
+
+      if (operator.getXButtonPressed()){
+        new ShooterSubsytem().Red();
+      }
+
+       if (operator.getRawAxis(5) != 0){
+        new IndexSub().IndexUp();
+      }
+
+      if (operator.getRawAxis(6) != 0){
+        new IndexSub().IndexDown();
+      }
+      
+      if(operator.getStartButton() && operator.getStartButton()) {
+        //Put climb code here 
+      }
+      if(operator.getRawAxis(1) != 0) {
+      new TurretSub().TurretLeft();
+       
+      }
+      if(operator.getRawAxis(4) != 0) {
+        new TurretSub().TurretRight();
+ 
+      }
+}
+      
+    // OPERATOR CONTROLS
+
+   
 
     
 
