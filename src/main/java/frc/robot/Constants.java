@@ -64,7 +64,7 @@ public final class Constants {
     // 2 brushless motors
 
     public static final int INDEX_MOTOR = 11;
-    public static final int ARCS_MOTOR = 10;
+    public static final int FEEDER_MOTOR = 10;
     public static final int TURRET_MOTOR = 9;
 
 
