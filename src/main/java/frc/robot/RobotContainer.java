@@ -65,7 +65,7 @@ public class RobotContainer {
     while(true) {
       
       if(useAutonomous) {
-         
+         double getAngle = limelight.getAngleX();
       }
 
       if(operator.getRawAxis(2) != 0){
