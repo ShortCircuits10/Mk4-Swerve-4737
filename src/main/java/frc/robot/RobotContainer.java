@@ -20,7 +20,7 @@ import frc.robot.Index.IndexSub;
 import frc.robot.Intake.IntakeSubsystem;
 import frc.robot.Shooter.subsystem.ShooterSubsytem;
 import frc.robot.Turret.TurretSub;
-
+import frc.robot.Limelight.limelight; //Errors could run on this line. 
 
 
 /**
@@ -35,6 +35,8 @@ public class RobotContainer {
 
   private final XboxController m_controller = new XboxController(0);
   private final XboxController operator = new XboxController(1);
+  private Limelight limelight = new Limelight();
+  private boolean useAutonomous = false;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -61,6 +63,10 @@ public class RobotContainer {
 
 
     while(true) {
+      
+      if(useAutonomous) {
+         
+      }
 
       if(operator.getRawAxis(2) != 0){
         new IntakeSubsystem().extendo();
