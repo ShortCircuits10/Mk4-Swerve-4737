@@ -66,6 +66,7 @@ public class RobotContainer {
     while(true) {
       
       if(useAutonomous) {
+        limelight.update();
          double getAngleVelocity = limelight.steerAdjustX();
         new DriveTrainSubsystem().drive(new ChassisSpeeds(0.0, 0.0, getAngleVelocity));
       }
