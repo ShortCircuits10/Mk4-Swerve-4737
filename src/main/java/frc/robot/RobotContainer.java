@@ -35,7 +35,8 @@ public class RobotContainer {
 
   private final XboxController m_controller = new XboxController(0);
   private final XboxController operator = new XboxController(1);
-  private Limelight limelight = new Limelight();
+  //Set steering speed for limelight
+  private Limelight limelight = new Limelight(0.01);
   private boolean useAutonomous = false;
 
   /**
@@ -65,7 +66,8 @@ public class RobotContainer {
     while(true) {
       
       if(useAutonomous) {
-         double getAngle = limelight.getAngleX();
+         double getAngleVelocity = limelight.steerAdjustX();
+        new DriveTrainSubsystem().drive(new ChassisSpeeds(0.0, 0.0, getAngleVelocity));
       }
 
       if(operator.getRawAxis(2) != 0){
